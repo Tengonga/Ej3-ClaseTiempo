@@ -3,62 +3,45 @@ public class Tiempo {
     private int minuto;
     private int segundo;
 
-    /*Constructores vacio,tres, dos, un parámetro*/
-    public Tiempo(int hora, int minuto, int segundo) {
-        this.hora = hora;
-        this.minuto = minuto;
-        this.segundo = segundo;
+    public Tiempo() {
+        // Constructor vacío
     }
-    public Tiempo(int hora, int minuto) {
-        this.hora = hora;
-        this.minuto = minuto;
-    }
-    public Tiempo(int hora) {
-        this.hora = hora;
-    }
-    public Tiempo() {}
 
-    /*Getter y setters*/
-    public int getHora() {
-        return hora;
-    }
-    public void setHora(int hora) {
-        this.hora = hora;
-    }
-    public int getMinuto() {
-        return minuto;
-    }
-    public void setMinuto(int minuto) {
-        this.minuto = minuto;
-    }
-    public int getSegundo() {
-        return segundo;
-    }
+    // Método para establecer los segundos
     public void setSegundo(int segundo) {
         this.segundo = segundo;
     }
 
-    /*Método toString() sobreescrito*/
-    public String toString(int hora, int minuto, int segundo) {
-        return String.format("%2dh : %2dmin : %2dseg", hora,minuto,segundo);
+    // Método para establecer la hora, minuto y segundo
+    public void setTiempo(int hora, int minuto, int segundo) {
+        this.hora = hora;
+        this.minuto = minuto;
+        this.segundo = segundo;
     }
-    public String toString(int hora, int minuto) {
-        return String.format("%2dh : %2dmin : %2dseg", hora,minuto);
+
+    // Método para establecer la hora y minuto
+    public void setTiempo(int hora, int minuto) {
+        setTiempo(hora, minuto, 0);
     }
-     public String toString(int tiempoSegundos) {// Aquí ingresas la cantidad de segundos que deseas convertir
-        int hora = tiempoSegundos / 3600;
-        int restoHora = tiempoSegundos % 3600;
-        int minuto = restoHora / 60;
-        int segundo = restoHora % 60;
-        return String.format("%2dh : %2dmin : %2dseg", hora,minuto,segundo);
+
+    // Método para establecer solo la hora
+    public void setTiempo(int hora) {
+        setTiempo(hora, 0, 0);
     }
+
+    // Método para crear un objeto Tiempo a partir de segundos
+    public void setTiempoFromSegundos(long segundos) {
+        this.hora = (int) (segundos / 3600);
+        segundos %= 3600;
+        this.minuto = (int) (segundos / 60);
+        this.segundo = (int) (segundos % 60);
+    }
+
+    // Método para obtener una representación textual del tiempo con un formato especificado
     public String toString() {
-        return String.format("%2dh : %2dmin : %2dseg", hora,minuto,segundo);
+        return String.format("%02d:%02d:%02d", hora, minuto, segundo);
     }
-
-
 }
-
 /*
  Crear una clase Tiempo, con atributos hora, minuto y segundo, que pueda ser construida indicando
  los tres atributos, solo la hora y minutos y solo la hora. Ademas, tambien debera ser posible crear un
