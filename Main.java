@@ -15,8 +15,6 @@ public class Main {
         int formato = tec.nextInt();
 
         Tiempo tiempo = new Tiempo();
-        Tiempo tiempo1 = new Tiempo();
-
 
         switch (formato) {
             case 1:
@@ -52,7 +50,6 @@ public class Main {
 
         System.out.println("-----------------------------");
         System.out.println("Tiempo: " + tiempo);
-        System.out.println("Tiempo: " + tiempo1);
         System.out.println("-----------------------------");
     }
 }
